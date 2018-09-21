@@ -8,3 +8,25 @@ body {
 .full-width{
     width: 100%
 }
+
+.sw-90-width{
+    width: 90%
+}
+
+a:hover{
+text-decoration: none;
+color: red
+}
+
+.padding-left{
+    padding-left: 30px;
+}
+
+.display-inline{
+   display: inline; 
+}
+
+.nav-height{
+    padding-top: 15px;
+    padding-bottom: 15px;
+}
