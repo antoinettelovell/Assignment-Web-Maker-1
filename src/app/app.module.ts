@@ -1,5 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { Routing } from './app.routing';
 
 import { AppComponent } from './app.component';
 import { LoginComponent } from './components/user/login/login.component';
@@ -38,7 +39,7 @@ import { WidgetYoutubeComponent } from './components/widget/widget-edit/widget-y
     WidgetYoutubeComponent
   ],
   imports: [
-    BrowserModule
+    BrowserModule, Routing
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -1,7 +1,7 @@
   <!-- Navbar -->
   <nav class="navbar navbar-dark bg-primary fixed-top">
-    <a class="navbar-brand" href="#"><b>Profile</b></a>          
-    <a class="color-white" href="#"><i class="fas fa-check"></i></a>
+    <a class="navbar-brand" routerLink="/user/:uid"><b>Profile</b></a>          
+    <a class="color-white" routerLink="/user:uid"><i class="fas fa-check"></i></a>
 </nav>
 <br>                   
 <!-- Form -->
@@ -33,9 +33,9 @@
          class="form-control">
     </div>
     <!-- Buttons -->
-    <a href="../website/website-list.html"
+    <a routerLink="/user/:uid/website"
     class="btn btn-primary btn-block">Websites</a>
-    <a href="Login.html" class="btn btn-danger
+    <a routerLink="/login" class="btn btn-danger
      btn-block">Logout</a>
     </form>
 </div>    
@@ -44,6 +44,6 @@
 fixed-bottom">
     <div class="full-width">               
         <a class="color-white float-right"
-         href="#"><i class="fas fa-user"></i></a>
+        routerLink="/user/:uid"><i class="fas fa-user"></i></a>
     </div>
     </nav>
