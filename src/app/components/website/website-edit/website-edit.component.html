@@ -3,24 +3,24 @@
   <!-- Left Nav -->
   <div class="col-4 ">           
       <a class="color-white"
-      href="website-list.html"><i class="fas
+     routerLink="/user/:uid/website"><i class="fas
       fa-chevron-left"></i></a>
       <a class="color-white padding-left"                  
-      routerLink=""><h5 class="display-inline">Edit Websites</h5>
+      routerLink="user/:uid/website/:wid"><h5 class="display-inline">Websites</h5>
       </a> 
       <a class="color-white float-right"
-       href="new-website.html"><i class="fas         
+       routerLink="/user/:uid/website/new"><i class="fas         
       fa-plus"></i></a>
   </div>
 
   <!-- Right Nav -->
   <div class="col-sm-8">
-      <a class="color-white d-sm-none"
-      href="website-list.html"><i class="fas
+          <a class="color-white d-sm-none"
+      routerLink="/user/:uid/website"><i class="fas
       fa-chevron-left"></i></a>
-      <a class="color-white padding-left" href="#"><h5 class="display-inline">New-Website</h5>
+      <a class="color-white padding-left" routerLink="/user/:uid/website/:uid"><h5 class="display-inline">Edit-Website</h5>
       </a>          
-      <a class="color-white float-right" href="website-list.html"><i class="fas
+      <a class="color-white float-right" routerLink="/user/:uid/website"><i class="fas
       fa-check"></i></a>
   </div>
 </nav>
@@ -31,27 +31,28 @@
       <div class="container-fluid">
       <ul class="list-group">
           <li class="list-group-item">
-          <a href= "../page/page-list.html">Address Book App</a>
-          <a class="float-right" href="website-edit.html"> <i class="fas fa-cogs"></i></a> 
+          <a routerLink="/user/:uid/website/:wid/page">Address Book App></a>
+          <a class="float-right" routerLink="/user/:uid/website/:wid"> <i class="fas fa-cogs"></i></a> 
           </li>
           <li class="list-group-item">
-          <a href="../page/page-list.html">Blogger</a>
-          <a class="float-right" href="website-edit.html"> <i class="fas fa-cogs"></i></a> 
+          <a routerLink="/user/:uid/website/:wid/page">Blogger</a>
+          <a class="float-right" routerLink="/user/:uid/website/:wid"> <i class="fas fa-cogs"></i></a> 
           </li>
           
           <li class="list-group-item">
-          <a href="../page/page-list.html">Blogging App</a>
-          <a class="float-right" href="website-edit.html"> <i class="fas fa-cogs"></i></a>         
+          <a routerLink="/user/:uid/website/:wid/page">Blogger</a>
+          <a routerLink="/user/:uid/">Blogging App</a>
+          <a class="float-right" routerLink="/user/:uid/website/:wid" > <i class="fas fa-cogs"></i></a>         
           </li>
           <li class="list-group-item">
-          <a href="../page/page-list.html">Script Testing App</a>
-          <a class="float-right" href="website-edit.html"> <i class="fas fa-cogs"></i></a> 
+          <a routerLink="/user/:uid/website/:wid/page">Script Testing App</a>
+          <a class="float-right" routerLink="/user/:uid/website/:wid"> <i class="fas fa-cogs"></i></a> 
           </li>
       </ul>
   </div>    
   </div>
   <!-- Right Form -->
-  <div class="col-sm-8"> 
+  <div class="col-sm-8">  
       <div class="container-fluid">
       <form>
           <div class="form-group">
@@ -69,8 +70,8 @@
                A quis explicabo magni, assumenda mollitia consequuntur magnam iste exercitationem, reprehenderit quasi doloremque voluptatibus sequi harum quibusdam 
                ed deleniti ipsum dolore repudiandae.</textarea>                   
             </div>
-            <a href="website-list.html" class="btn btn-lg btn-warning">Cancel</a>                 
-            <a href="website-list.html" class="btn btn-lg btn-danger float-right">Delete</a>
+            <a routerLink="/user/:uid/website" class="btn btn-lg btn-warning">Cancel</a>                 
+            <a routerLink="/user/:uid/website" class="btn btn-lg btn-danger float-right">Submit</a>
       </form>
   </div>
   </div> 
@@ -81,6 +82,6 @@
 fixed-bottom">
   <div class="full-width">               
       <a class="color-white float-right"
-       href="../user folder/profile.html"><i class="fas fa-user"></i></a>
+       routerLink="user/:uid "><i class="fas fa-user"></i></a>
   </div>
 </nav>  
