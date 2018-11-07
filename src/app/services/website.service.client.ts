@@ -6,7 +6,8 @@ import { from } from 'rxjs';
 export class WebsiteService {
     constructor() { }
    websites = [
-    { _id: "123",
+    {
+    _id: "123",
     name: "Facebook",
     developerId: "456",
     description: "Lorem"
@@ -42,6 +43,7 @@ export class WebsiteService {
     name: "Chess",
     developerId: "234", 
     description: "Lorem"
+}
 ];
 
   createWebsite(website){
