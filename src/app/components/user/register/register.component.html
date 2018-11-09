@@ -1,17 +1,22 @@
 <div class="container">
   <h1>Register</h1>
-  <form>
+  <form (ngSubmit) = "register()" #myForm= "ngForm">
+      <div *ngIf= "userError" class= "alert alert-danger">This username is taken, please try another one</div>
+      <div *ngIf= "passwordError" class= "alert alert-danger">The two passwords do not match, please try it again</div>
       <div class="form-group">
-          <input class="form-control" type="text" placeholder="Username">
-      </div> 
-      <div class="form-group">
-          <input class="form-control" type="password" placeholder="Password">
+          <input [(ngModel)]= "username" required name= "username" class="form-control" type="text" placeholder="Username" #userInput= "ngModel">
       </div>
+      <div *ngIf= "userInput.invalid && userInput.touched" class= "alert alert-warning">Username cannot be empty</div> 
       <div class="form-group">
-           <input class="form-control" type="verify password"
-            placeholder="Verify Password">
+          <input [(ngModel)]= "password" required name= "password" class="form-control" type="password" #passwordInput= "ngModel">
+      </div>
+      <div *ngIf= "passwordInput.invalid && passwordInput.touched" class= "alert alert-warning">Password cannot be empty</div>
+      <div class="form-group">
+           <input [(ngModel)]= "verifyPassword" required name= "verifyPassword" class="form-control" type="password"
+            placeholder="Verify Password" #verifyPasswordInput= "ngModel">
+      <div *ngIf= "verifyPasswordInput.invalid && verifyPasswordInput.touched" class= "alert alert-warning">Please enter the password again</div>
       </div>        
       <div class="form-group"></div>
-      <a routerLink="/user/:uid" class="btn btn-primary btn-block">Register</a>
+      <button type = "submit" [disabled]= "myForm.invalid" class="btn btn-primary btn-block">Register</button>
       <a routerLink="/login" class="btn btn-danger btn-block">Cancel</a>
 </form>

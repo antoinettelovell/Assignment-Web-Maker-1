@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+
 // injecting service into module
 @Injectable()
 export class UserService {
@@ -41,13 +42,13 @@ users = [
     ]
     ;
     createUser(user: any) {
-    user._id = Math.random().toString;
+    user._id = Math.random().toString();
     this.users.push(user);
     return user;
   }
 
    findUserById(userId: string) {  
-    for (let x = 0; x < this.users.length; x+) {    
+    for (let x = 0; x < this.users.length; x++) {    
     if (this.users[x]._id === userId) {
       return this.users[x];
     }
