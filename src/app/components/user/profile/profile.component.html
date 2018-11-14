@@ -30,7 +30,7 @@
         <label for="lastName"><b>Last Name</b></label>         <input class="form-control" [(ngModel)]= "user.lastName" name= "lastName" placeholder= "Enter Last Name...">
     </div>
     <!-- Buttons -->
-    <a routerLink="/user/:uid/website"
+    <a routerLink="/user/{{uid}}/website"
     class="btn btn-primary btn-block">Websites</a>
     <a routerLink="/login" class="btn btn-danger
      btn-block">Logout</a>
@@ -42,5 +42,5 @@ fixed-bottom">
     <div class="full-width">               
         <a class="color-white float-right"
         routerLink="/user/{{uid}}"><i class="fas fa-user"></i></a>
-    </div>
+      </div>
     </nav>

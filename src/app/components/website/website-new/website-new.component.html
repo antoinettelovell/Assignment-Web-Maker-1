@@ -3,24 +3,23 @@
   <!-- Left Nav -->
 <!-- List & Form -->
   <div class="col-4 d none d-sm-block">           
-      <a class="color-white" routerLink="/user/:iud/website"><i class="fas
+      <a class="color-white" routerLink="/user/{{uid}}/website"><i class="fas
       fa-chevron-left"></i></a>
       <a class="color-white padding-left"                  
-       routerLink="/user/:uid/website/new"><h5 class="display-inline">Websites</h5>
+       routerLink="/user/{{uid}}/website/new"><h5 class="display-inline">Websites</h5>
       </a> 
-      <a class="color-white float-right"
-      routerLink="/user/:uid/website/new"><i class="fas         
-      fa-plus"></i></a>
+      <button class="btn color-white float-right bg-transparent"
+      routerLink="/user/{{uid}}/website/new"><i class="fas         fa-plus"></i></button>
   </div>
 
   <!-- Right Nav -->
   <div class="col-sm-8">
-      <a class="color-white d-sm-none" routerLink="/user/:uid/website">
+      <a class="color-white d-sm-none" routerLink="/user/{{uid}}/website">
         <i class="fas fa-chevron-left"></i>
       </a>
-      <a class="color-white padding-left" routerLink="/user/:uid/website/new"><h5 class="display-inline">New-Website</h5></a>          
-      <a class="color-white float-right" routerLink="/user/:uid/website/"><i class="fas
-      fa-check"></i></a>
+      <a class="color-white padding-left" routerLink="/user/{{uid}}/website/new"><h5 class="display-inline">New-Website</h5></a>          
+      <button type= "submit" form= "myForm" class="color-white float-right btn bg-transparent" routerLink="/user/{{uid}}/website/"><i class="fas
+      fa-check"></i></button>
   </div>
 </nav>
 <!-- List & Form -->
@@ -29,44 +28,30 @@
   <div class="col-4 d-none d-sm-block">
       <div class="container-fluid">
       <ul class="list-group">
-          <li class="list-group-item">
-          <a routerLink="/user/:uid/website/:wid/page">Address Book App</a>
-          <a class="float-right" routerLink="/user/:uid/website/:wid"> <i class="fas fa-cogs"></i></a> 
-          </li>
-          <li class="list-group-item">
-          <a routerLink="/user/:uid/website/:wid/page">Blogger</a>
-          <a class="float-right" routerLink="/user/:uid/website/:wid"> 
-            <i class="fas fa-cogs"></i></a> 
-          </li>          
-          <li class="list-group-item">
-          <a routerLink="/user/:uid/website/:wid/page">Blogging App</a>
-          <a class="float-right" routerLink="/user/:uid/website/:wid"> <i class="fas fa-cogs"></i></a>         
-          </li>
-          <li class="list-group-item">
-          <a routerLink="/user/:uid/website/:wid/page">Script Testing App</a>
-          <a class="float-right" routerLink="/user/:uid/website/:wid" > <i class="fas fa-cogs"></i></a> 
-          </li>
+        <li class="list-group-item" *ngFor= "let website of websites">
+          <a routerLink="/user/{{uid}}/website/{{website._id}}/page">{{website.name}}</a>
+          <a class="float-right" routerLink="/user/{{uid}}/website/{{website._id}}"> <i class="fas fa-cogs"></i></a> 
+        </li>          
       </ul>
   </div>    
   </div>
   <!-- Right Form -->
   <div class="col-sm-8"> 
       <div class="container-fluid">
-      <form>
+      <form id= "myForm" #myForm= "ngForm" (ngSubmit)= "createWebsite()">
           <div class="form-group">
               <label for="name"><b>Name</b></label>
-              <input id="name"
-               class="form-control"
+              <input [(ngModel)]= "name" name= "name" id="name" required class
                type="text" placeholder="Name of the Website">
           </div>
           <div class="form-group">
               <label for="description"><b>Description</b></label>
-              <textarea id="description"
+              <textarea [(ngModel)]= "description" name= "description" id="description"
               rows="5" class="form-control"
               type="text"placeholder="Describe the Website"></textarea>                   
             </div>
-            <a routerLink="/user/:iud/website" class= "btn-lg btn-warning">Cancel</a>                 
-            <a routerLink="/user/:iud/website" class="btn btn-lg btn-success float-right">Submit</a>
+            <a routerLink="/user/{{uid}}/website" class= "btn-lg btn-warning">Cancel</a>                 
+           <button type= "submit" class="btn btn-lg btn-success float-right">Submit</button>
       </form>
   </div>
   </div> 
@@ -77,6 +62,6 @@
 fixed-bottom">
   <div class="full-width">               
       <a class="color-white float-right"
-      routerLink="/user/:uid"><i class="fas fa-user"></i></a>
+      routerLink="/user/{{uid}}"><i class="fas fa-user"></i></a>
   </div>
 </nav>  
