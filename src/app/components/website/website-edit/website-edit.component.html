@@ -6,7 +6,7 @@
      routerLink="/user/{{uid}}/website"><i class="fas
       fa-chevron-left"></i></a>
       <a class="color-white padding-left"                  
-      routerLink="user/{{uid}}/website/{{wid}}"><h5 class="display-inline">Websites</h5>
+      routerLink="/user/{{uid}}/website/{{wid}}"><h5 class="display-inline">Websites</h5>
       </a> 
       <a class="color-white float-right"
        routerLink="/user/{{uid}}/website/new"><i class="fas         
@@ -30,7 +30,7 @@
       <div class="container-fluid">
       <ul class="list-group">
           <li class="list-group-item" *ngFor="let website of websites">
-          <a routerLink="/user/{{uid}}/website/{website._id}}/page">{{website.name}}</a>
+          <a routerLink="/user/{{uid}}/website/{{website._id}}/page">{{website.name}}</a>
           <a class="float-right" routerLink="/user/{{uid}}/website/{{website._id}}"> <i class="fas fa-cogs"></i></a> 
           </li>
       </ul>
@@ -65,6 +65,6 @@
 fixed-bottom">
   <div class="full-width">               
       <a class="color-white float-right"
-       routerLink="user/{{uid}} "><i class="fas fa-user"></i></a>
+       routerLink="/user/{{uid}}"><i class="fas fa-user"></i></a>
   </div>
 </nav>  

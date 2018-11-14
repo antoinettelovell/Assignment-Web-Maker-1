@@ -14,14 +14,14 @@ export class ProfileComponent implements OnInit {
   user: any;
   oldUsername: string;
   userError: boolean;
-  successFlag: boolean
+  successFlag: boolean;
   users; 
 
       ngOnInit() {
      this.activatedRoute.params.subscribe(params => {
        this.uid = params["uid"];
-       this.user = this.userService.findUserById(this.uid)
-       this.oldUsername = this.user.username;         
+       this.user = this.userService.findUserById(this.uid);
+       this.oldUsername = this.user.username;   this.users = this.userService.users;     
     });           
   }
 

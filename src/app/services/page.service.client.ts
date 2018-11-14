@@ -5,13 +5,13 @@ import { Injectable } from '@angular/core';
 export class PageService {
   pages = [
    { _id: "321", name: "Post 1", websiteId: "456",
-   description: "Lorem" },
+  title: "Lorem" },
   
     { _id: "432", name: "Post 2", websiteId: "456", 
-    description: "Lorem" },
+   title: "Lorem" },
   
     { _id: "543", name: "Post 3", websiteId: "456",
-    description: "Lorem" }
+   title: "Lorem" }
   ];
 
   createPage(page) {
@@ -20,7 +20,7 @@ export class PageService {
       return page;
   }
 
-  findPageByWebsiteId(websiteId) {
+  findPagesByWebsiteId(websiteId) {
       let result = [];
       for(let i = 0; i < this.pages.length; i++) {
           if(this.pages[i].websiteId === websiteId) {
@@ -30,7 +30,7 @@ export class PageService {
       return result;
     }
 
-    findPageById(pageId) {
+    findPagesById(pageId) {
         for(let i = 0; i < this.pages.length; i++) {
             if(pageId === this.pages[i]._id) {
               return this.pages[i];           
@@ -39,14 +39,14 @@ export class PageService {
 
     }
     updatePage(page) {
-        const oldPage = this.findPageById(page._id);
+        const oldPage = this.findPagesById(page._id);
         const index =this.pages.indexOf(oldPage);
         this.pages[index] = page;
 
     }    
  
     deletePage(pageId) {
-        const oldPage = this.findPageById(pageId);
+        const oldPage = this.findPagesById(pageId);
         const index = this.pages.indexOf(oldPage);
         this.pages.splice(index, 1);
     }

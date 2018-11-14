@@ -11,7 +11,7 @@ export class WebsiteEditComponent implements OnInit {
 wid: string;
 uid: string;
 description: string;
-  website: { _id: string; name: string; developerId: string; description: string; };
+  website: { _id: string, name: string, developerId: string, description: string };
   websites: any[];
   constructor(private websiteService: WebsiteService, private activatedRoute: ActivatedRoute, private router: Router) { }
 
