@@ -5,24 +5,24 @@ import { Injectable } from '@angular/core';
 export class WidgetService {
     widgets = [
 
-    { _id: "123", widgetType: "HEADING", pageId: "321", size: 2, text: "GIZMODO"
+    { _id: "123", widgetType: "HEADING", pageId: "321", size: 2, text: "HAIR BRAIDING"
 },
       
-    { _id: "234", widgetType: "HEADING", pageId: "321", size: 4, text: "Lorem ipsum"
+    { _id: "234", widgetType: "HEADING", pageId: "321", size: 4, text: "BRAIDING STYLES"
 
-   },
-      
-    { _id: "345", widgetType: "IMAGE", pageId: "321", width: "100%", url: "https://www.gettyimages.ie/gi-resources/images/Homepage/Hero/UK/CMS_Creative_164657191_Kingfisher.jpg"
+},
+    { _id: "345", widgetType: "IMAGE", pageId: "321", width: "70%", url: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT2NZrgaE_LytuA0XH3JUpL6s4b0gGX400-4Dcb4AMVvT-67mta"
+},      
+
+   { _id: "567", widgetType: "HEADING", pageId: "321", size: 4, text: "BRAIDING TUTORIAL"
 },
       
-   { _id: "567", widgetType: "HEADING", pageId: "321", size: 4, text: "Lorem ipsum"
-},
-      
-    { _id: "678", widgetType: "YOUTUBE", pageId: "321", width: "100%", url: "https://youtu.be/AM2Ivdi9c4E" 
-    }      
+    { _id: "678", widgetType: "YOUTUBE", pageId: "321", width: "70%", url: 
+    "https://youtu.be/FFQvKBWxvgA" 
+},      
   ];
     createWidget(widget) {
-        widget._id = Math.random.toString();
+        widget._id = Math.random().toString();
         this.widgets.push(widget);
         return widget;
     }
@@ -38,7 +38,7 @@ export class WidgetService {
 }
     findWidgetById(widgetId) {
     for(let i = 0; i< this.widgets.length; i++){
-        if(widgetId = this.widgets[i]._id){
+        if(widgetId === this.widgets[i]._id){
             return this.widgets[i];
         }
     }        

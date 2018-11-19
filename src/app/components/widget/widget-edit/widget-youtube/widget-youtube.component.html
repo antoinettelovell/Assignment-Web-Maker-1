@@ -1,40 +1,47 @@
 <!-- navbar -->
 <nav class="navbar navbar-light fixed-top bg-light">
   <a class="color-black"
-   routerLink= "/user/:uid/website/:wid/page/:pid/widget"><i class="fas
+  routerLink="/user/{{uid}}/website/{{wid}}page/{{pid}}/widget">
+  <i class="fas
    fa-chevron-left"></i></a>
    <a class="navbar-brand" 
-  routerLink= "/user/:uid/website/:wid/page/:pid/widget/:wgid ">Widget Edit</a>
-   <a class="color-black" routerLink= "/user/:uid/website/:wid/page/:pid/widget"><i
-      class="fas fa-check"></i></a>
+   routerLink= "/user/{{uid}}/website/{{wid}}page/{{pid}}/widget/{{wgid}}">
+   Widget Edit</a>
+   <button class="color-black btn bg-transparent"
+   form= "myForm" type= "submit"><i
+      class="fas fa-check"></i></button>
 </nav>
 <!-- form -->
 <div class="container">
-  <form>
+  <form id= "myForm" #myForm= "ngForm" (ngSubmit)= "update()">
    <!-- name -->
    <div class="form-group">
       <label for="name"><b>Name</b></label>
-       <input type="text" id="name" class="form-control">
+       <input name= "name" placeholder= "Image Name" [(ngModel)]=
+        "widget.name" type="text" id="name" class="form-control">
    </div>
   <!-- url -->
   <div class="form-group">
       <label for="url"><b>Url</b></label>
-       <input type="text" id="url" class="form-control">
+       <input name= "url" placeholder= "Image Url" [(ngModel)]=
+       "widget.url" type="text" id="url" class="form-control">
    </div>
   <!-- width -->
   <div class="form-group">
       <label for="width"><b>Width</b></label>
-       <input type="text" id="width" class="form-control">
+       <input name= "width" placeholder="Image Width" [(ngModel)]=
+       "widget.width" type="text" id="width" class="form-control">
    </div>                        
-   <a routerLink= "/user/:uid/website/:wid/page/:pid/widget" class="btn btn-danger btn-block">Delete</a>
-  </form>
+   <button type= "button" (click) = "delete()" class=
+   "btn btn-danger btn-block">Delete</button>
+  </form> 
 </div>
 
 <!-- footer --> 
 <footer class="navbar navbar-light fixed-bottom bg-light">
   <div class="full-width">
        <a class="color-black float-right"
-       routerLink= "/user/:uid"><i class="fas fa-user"></i></a>
+       routerLink= "/user/{{uid}}"><i class="fas fa-user"></i></a>
 
   </div> 
 </footer>
