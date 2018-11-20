@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import {UserService } from "../../../services/user.service.client"
+import {UserService } from "../../../services/user.service.client";
 import { Router } from "@angular/router";
+import { User } from "../../../models/user.models.client";
+
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -16,7 +18,7 @@ export class LoginComponent implements OnInit {
 
   
   login() {
-      const user = this.userService.findUserByCredentials(
+      const user: User = this.userService.findUserByCredentials(
         this.username,
         this.password
       );
