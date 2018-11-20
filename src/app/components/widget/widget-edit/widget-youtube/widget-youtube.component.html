@@ -1,11 +1,11 @@
 <!-- navbar -->
 <nav class="navbar navbar-light fixed-top bg-light">
   <a class="color-black"
-  routerLink="/user/{{uid}}/website/{{wid}}page/{{pid}}/widget">
+  routerLink="/user/{{uid}}/website/{{wid}}/page/{{pid}}/widget">
   <i class="fas
    fa-chevron-left"></i></a>
    <a class="navbar-brand" 
-   routerLink= "/user/{{uid}}/website/{{wid}}page/{{pid}}/widget/{{wgid}}">
+   routerLink= "/user/{{uid}}/website/{{wid}}/page/{{pid}}/widget/{{wgid}}">
    Widget Edit</a>
    <button class="color-black btn bg-transparent"
    form= "myForm" type= "submit"><i
@@ -14,13 +14,7 @@
 <!-- form -->
 <div class="container">
   <form id= "myForm" #myForm= "ngForm" (ngSubmit)= "update()">
-   <!-- name -->
-   <div class="form-group">
-      <label for="name"><b>Name</b></label>
-       <input name= "name" placeholder= "Image Name" [(ngModel)]=
-        "widget.name" type="text" id="name" class="form-control">
-   </div>
-  <!-- url -->
+<!-- url -->
   <div class="form-group">
       <label for="url"><b>Url</b></label>
        <input name= "url" placeholder= "Image Url" [(ngModel)]=

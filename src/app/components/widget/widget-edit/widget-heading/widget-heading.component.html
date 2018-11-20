@@ -9,13 +9,7 @@
 <!-- form -->
 <div class="container">
   <form id= "myForm" #myForm= "ngForm" (ngSubmit)= "update()">
-   <!-- name -->
-   <div class="form-group">
-      <label for="name"><b>Name</b></label>
-         <input placeholder= "Widget Name" name= "name" 
-        [(ngModel)]= "widget.name" type="text" id="name" class="form-control">
-   </div>
-  <!-- text -->
+<!-- text -->
    <div class="form-group">
       <label for="text"><b>Text</b></label>
        <input name= "text" [(ngModel)]= "widget.text" type= "text"

@@ -11,7 +11,8 @@ import { Website } from 'src/app/models/website.model.client';
 export class WebsiteEditComponent implements OnInit {
 wid: string;
 uid: string;
-description: string;  website: { _id: string, name: string, 
+description: string;  
+website: { name: string, 
 developerId: string, description: string };
 websites: Website[];
   constructor(private websiteService: WebsiteService,
