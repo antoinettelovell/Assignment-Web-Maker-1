@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { WebsiteService } from 'src/app/services/website.service.client';
 import { ActivatedRoute, Router } from '@angular/router';
+import { Website } from 'src/app/models/website.model.client';
 
 @Component({
   selector: 'app-website-edit',
@@ -10,10 +11,11 @@ import { ActivatedRoute, Router } from '@angular/router';
 export class WebsiteEditComponent implements OnInit {
 wid: string;
 uid: string;
-description: string;
-  website: { _id: string, name: string, developerId: string, description: string };
-  websites: any[];
-  constructor(private websiteService: WebsiteService, private activatedRoute: ActivatedRoute, private router: Router) { }
+description: string;  website: { _id: string, name: string, 
+developerId: string, description: string };
+websites: Website[];
+  constructor(private websiteService: WebsiteService,
+    private activatedRoute: ActivatedRoute, private router: Router) { }
 
   ngOnInit() {
     this.activatedRoute.params.subscribe(params => {
@@ -25,7 +27,7 @@ description: string;
   }
 
   update(){
-     const newWeb = {
+     const newWeb: Website = {
        name: this.website.name,
        description: this.website.description,
        _id: this.wid,
