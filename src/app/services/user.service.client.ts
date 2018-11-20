@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { User } from '../models/user.model.client';
 
 // injecting service into module
 @Injectable()
@@ -6,7 +7,7 @@ export class UserService {
   constructor() { }
 
 
-users = [
+users: User[] = [
 
         {_id: "123",
         username: "alice",
@@ -41,7 +42,7 @@ users = [
       }
     ]
     ;
-    createUser(user: any) {
+    createUser(user: User) {
     user._id = Math.random().toString();
     this.users.push(user);
     return user;
@@ -72,8 +73,8 @@ users = [
           }     
         }   
     }  
-    updateUser(user){
-        const oldUser = this.findUserById(user.id);
+    updateUser(user: User){
+        const oldUser = this.findUserById(user._id);
         const index = this.users.indexOf(oldUser);
         this.users[index] = user;
     }   

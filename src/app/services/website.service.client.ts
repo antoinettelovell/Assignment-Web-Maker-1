@@ -1,11 +1,12 @@
 import { Injectable } from '@angular/core';
 import { from } from 'rxjs';
+import { Website } from '../models/website.model.client';
 
 // injecting service into module
 @Injectable()
 export class WebsiteService {
     constructor() { }
-   websites = [
+   websites: Website[]= [
     {
     _id: "123",
     name: "Facebook",
@@ -46,12 +47,12 @@ export class WebsiteService {
 }
 ];
 
-  createWebsite(website){
+  createWebsite(website: Website){
         website._id = Math.random().toString();
         this.websites.push(website);
         return(website);
   }
-    findWebsitesByUser(userId){
+    findWebsitesByUser(userId: string){
         let result =[];
         for(let i = 0; i <this.websites.length; i++) {
             if(this.websites[i].developerId === userId) {
@@ -61,19 +62,19 @@ export class WebsiteService {
         return result;
     } 
    
-    findWebsitebyId(websiteId) {
+    findWebsitebyId(websiteId: string) {
         for(let i = 0; i < this.websites.length; i++){
             if(this.websites[i]._id === websiteId) {
                 return this.websites[i];
             }
         }
     }
-    updateWebsites(website) {
+    updateWebsites(website: Website) {
         const oldWeb = this.findWebsitebyId(website._id);
         const index = this.websites.indexOf(oldWeb);
         this.websites[index] = website;
     }
-    deleteWebsite(websiteId) {
+    deleteWebsite(websiteId: string) {
        const website = this.findWebsitebyId(websiteId);
        const index = this.websites.indexOf(website);
        this.websites.splice(index, 1);      

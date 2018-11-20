@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { WidgetService } from 'src/app/services/widget.service.client';
 import { DomSanitizer } from '@angular/platform-browser';
+import { Widget } from 'src/app/models/widget.model.client';
 
 @Component({
   selector: 'app-widgit-list',
@@ -12,7 +13,7 @@ export class WidgitListComponent implements OnInit {
   uid: string;
   wid: string;
   pid: string;
-  widgets: any[];
+  widgets: Widget[];
   constructor(private activatedRoute: ActivatedRoute, private widgetService: WidgetService, private sanitizer: DomSanitizer ) { }
 
   ngOnInit() {
@@ -28,8 +29,8 @@ export class WidgitListComponent implements OnInit {
 
     parseYoutubeSrc(src) {
       // transfer video url into embeded video url
-      let embedUrl= "https://www.youtube.com/embed/";
-      const splitUrl= src.split("/");
+      let embedUrl: string= "https://www.youtube.com/embed/";
+      const splitUrl: string[]= src.split("/");
       embedUrl += splitUrl[splitUrl.length - 1];
 
       // telling browser this src is safe
