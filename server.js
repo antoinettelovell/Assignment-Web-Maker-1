@@ -5,7 +5,7 @@ const http = require("http");
 const path = require("path");
 
 app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ectended: true}));
+app.use(bodyParser.urlencoded({extended: true}));
 
 //
 app.use(express.static(path.join(__dirname, "dist")));
@@ -23,20 +23,21 @@ app.use(function(req, res, next) {
 
   const port = process.env.PORT || "3100"
   app.set("port", port);
-
   //create HTTP server
   const server = http.createServer(app);
+
+  require("./server/app")(app);
 
   // For Build: Catch all other 
   //routes and return the index file -- BUILDING
 
-  app.get('*', function (req, res) {
-  res.sendFile(path.join(__dirname, 'dist/index.html'));
+  app.get("*", function (req, res) {
+  res.sendFile(path.join(__dirname, "dist/index.html"));
     });
 
   // server.listen(port);
  server.listen( port , function()
- {console.log('Running on ' + app.get('port'));});
+ {console.log("Running on " + app.get("port"));});
 
 
 

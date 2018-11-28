@@ -12,7 +12,13 @@ export class ProfileComponent implements OnInit {
   constructor(private activatedRoute: ActivatedRoute, private userService: UserService) { }
   
   uid: string;
-  user: User;
+  user: User = {
+    username: "", 
+    password: "", 
+    firstName: "",
+    lastName: "",
+    email: ""
+  };
   oldUsername: string;
   userError: boolean;
   successFlag: boolean;
@@ -20,27 +26,43 @@ export class ProfileComponent implements OnInit {
 
       ngOnInit() {
      this.activatedRoute.params.subscribe(params => {
-       this.uid = params["uid"];
-       this.user = this.userService.findUserById(this.uid);
-       this.oldUsername = this.user.username;   this.users = this.userService.users;     
-    });           
-  }
+      this.uid = params["uid"];
+      this.userService.findUserById(this.uid).subscribe(
+        (user: User) => {
+          this.user = user;
+          this.oldUsername = this.user.username;
+        });
+      });        
+    }           
+ 
 
   update() {
     if(this.user.username === this.oldUsername) {
-      this.userError = false;
-      this.successFlag = true;
-      this.userService.updateUser(this.user);
-    } else {
-      const user: User = this.userService.findUserByUsername(this.user.username);
-      if(user) {
-        this.userError = true;
-        this.successFlag = false;
-      } else {
-        this.userError = false;
+       this.userService.updateUser(this.user).subscribe(
+        (user: User) => {
+        this.userError =false;
         this.successFlag = true;
-        this.userService.updateUser(this.user);
+      });
+    } else {
+        this.userService.findUserByUsername
+        (this.user.username).subscribe(
+          (user: User) => {
+            this.userError =false;
+            this.successFlag = true;
+          },
+          (error: any) => {
+            this.userService.updateUser(this.user)
+            .subscribe(
+              (user: User) => {
+                this.userError =false;
+                this.successFlag = true;
+              });
+            }
+          );
+        }
       }
-    }
-  }
-}
+    }  
+      
+
+
+
