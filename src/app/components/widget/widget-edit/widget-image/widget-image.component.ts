@@ -13,7 +13,8 @@ export class WidgetImageComponent implements OnInit {
   wid: string;
   pid: string;
   wgid: string;
-  widget: Widget;
+  widget: Widget = { _id: "", widgetType: "IMAGE", pageId: "", width: "", url: ""
+};
     constructor(private activatedRoute: ActivatedRoute,
        private router: Router,
        private widgetService: WidgetService) { }
@@ -25,25 +26,31 @@ export class WidgetImageComponent implements OnInit {
         this.wid = params["wid"];
         this.pid = params["pid"];
         this.wgid = params["wgid"];
-        this.widget =this.widgetService.findWidgetById(this.wgid);    
-      });  
-    }
+        this.widgetService.findWidgetById(this.wgid).subscribe(
+          (widget: Widget) => {
+            this.widget = widget;
+      });         
+    });  
+  }
     update(){
-      this.widgetService.updateWidget(this.widget);
-      this.router.navigate ([
-        "user", this.uid, "website", this.wid, "page", this.pid,
-        "widget"
-      ]);    
-    }
+      this.widgetService.updateWidget(this.widget).subscribe(
+        (widget: Widget) => {
+          this.router.navigate ([
+            "user", this.uid, "website", this.wid, "page", this.pid,
+             "widget"
+      ]);  
+    });    
+  }
   
     delete(){
-      this.widgetService.deleteWidget(this.wgid);
-      this.router.navigate ([
-        "user", this.uid, "website", this.wid, "page", this.pid,
-        "widget"
-      ]);
-    }
-    
+      this.widgetService.deleteWidget(this.wgid).subscribe(
+        (widgets: Widget[]) => {
+          this.router.navigate ([
+            "user", this.uid, "website", this.wid, "page", this.pid,
+            "widget"
+        ]);
+      });    
+    }    
   }
   
   

@@ -1,13 +1,13 @@
 module.exports = function(app) {
     // create website
-    app.post("/api/website", createWebsite);
+    app.post("/api/website/", createWebsite);
     // find websites for user
-    app.get("/api/user/:uid/website", findAllWebsitesForUser);
+    app.get("/api/user/:uid/website/", findAllWebsitesForUser);
     //find website by id
-    app.get("/api/website/:wid", findWebsiteById);
+    app.get("/api/website/:wid/", findWebsiteById);
     //update website
     app.put("/api/website", updateWebsite);
-    app.delete("/api/website/:wid", deleteWebsite);
+    app.delete("/api/website/:wid/", deleteWebsite);
 
     websites = [
         {

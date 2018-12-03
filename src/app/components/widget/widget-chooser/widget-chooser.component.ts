@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { WidgetService } from 'src/app/services/widget.service.client';
-import { THROW_IF_NOT_FOUND } from '@angular/core/src/di/injector';
 import { Widget } from 'src/app/models/widget.model.client';
 
 @Component({
@@ -15,7 +14,8 @@ uid: string;
 wid: string;
 pid: string;
 
-constructor(private activatedRoute: ActivatedRoute, private widgetService: WidgetService, private router: Router) { }
+constructor(private activatedRoute: ActivatedRoute,
+  private widgetService: WidgetService, private router: Router) { }
 
   ngOnInit() {
     this.activatedRoute.params.subscribe(
@@ -31,12 +31,11 @@ constructor(private activatedRoute: ActivatedRoute, private widgetService: Widge
       pageId: this.pid
     };
 
-    this.widgetService.createWidget(widget);
-
-    const wgid: string= this.widgetService.widgets[
-    this.widgetService.widgets.length - 1
-    ]._id;
-
-    this.router.navigate(["user", this.uid, "website",this.wid, "page",this.pid, "widget", wgid]);
-    }
+    this.widgetService.createWidget(widget).subscribe(
+      (widget: Widget) => {
+      this.router.navigate(["user", this.uid,
+      "website",this.wid, "page",this.pid, "widget", widget._id
+      ]);
+    });        
+  }
 }
