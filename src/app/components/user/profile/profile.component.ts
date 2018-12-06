@@ -46,22 +46,22 @@ export class ProfileComponent implements OnInit {
     } else {
         this.userService.findUserByUsername
         (this.user.username).subscribe(
-          (user: User) => {
-            this.userError =false;
-            this.successFlag = true;
-          },
-          (error: any) => {
+         (data: any) => {
+          if(!data) {
             this.userService.updateUser(this.user)
             .subscribe(
               (user: User) => {
                 this.userError =false;
                 this.successFlag = true;
-              });
-            }
-          );
+               })
+            } else {
+              this.userError =true;
+              this.successFlag = false;
+            } 
+          });   
         }
       }
-    }  
+    }
       
 
 

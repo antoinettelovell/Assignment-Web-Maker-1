@@ -1,5 +1,7 @@
 module.exports = function(app) {
-   //create user //post
+   const userModel= require("../models/user/user.model.server"); 
+
+   //create user //postnod
    app.post("/api/user", createUser);
    //get user by id
    app.get("/api/user/:uid", findUserById);
@@ -7,94 +9,43 @@ module.exports = function(app) {
    app.get("/api/user", findUser);
    //put //update
    app.put("/api/user", updateUser); 
-   //delete 
-    
-    
-    users = [
-            { _id: "123",
-              username: "alice",
-              password: "alice",
-              firstName: "Alice",
-              lastName: "Wonder",
-              email: "alice@gmail.com"
-          },
-          {  
-             _id: "234",
-              username: "bob",
-              password: "bob",
-              firstName: "Bob",
-              lastName: "Marley",
-              email: "bob@whatever.com"
-          },
-          {
-              _id: "345",
-              username: "charly",
-              password: "charly",
-              firstName: "Charly",
-              lastName: "Garcia",
-              email: "charly@hotmail.com"
-          },
-          {
-              _id: "456",
-              username: "shiyu",
-              password: "shiyu",
-              firstName: "Shiyu",
-              lastName: "Wang",
-              email: "swang@ulem.org"
-            }
-        ];
-
-        function createUser(req, res) {
-           const user = req.body;
-            user._id = Math.random().toString();
-            users.push(user);
-            res.json(user);
+        
+        async function createUser(req, res) {
+           var user = req.body;
+           const data = await userModel.createUser(user);
+           res.json(data); 
         } 
         
-        function findUserById(req, res){ 
+        async function findUserById(req, res){ 
             const userId = req.params["uid"];
-            let user = selectUserById(userId);
-            res.json(user);
+            const data = await userModel.findUserById(userId)
+            res.json(data);           
         }
                
-        function findUser(req, res){  
+        async function findUser(req, res){  
            const username = req.query["username"];
            const password = req.query["password"];
-                     
-        if(username && password) {
-            let user; 
-            for(let i = 0; i < users.length; i++) {
-            if(users[i].username === username && users[i]
-            .password === password) {
-            user = users[i];
-            }              
-        } 
-             res.json(user);    
-             return;      
-    } 
-        if(username) {
-            let user;
-            for(let i = 0; i < users.length; i++) {
-            if(users[i].username === username) {
-            user = users[i];
-            }
+           if(username && password) {
+           const data = await  userModel.findUserByCredentials
+            (username, password);  
+            res.json(data);
+            return; 
         }
-            res.json(user);
-            return;
-    }
-}      
-        function selectUserById(uid) {
-            for (let x = 0; x < users.length; x++) {    
-                if (users[x]._id === uid) {
-               return users[x];
-                }
-            } 
-        }    
-        function updateUser(req, res) {
+             
+         if (username) {
+          const data = await
+          userModel.findUserByUsername
+          (username);
+          res.json(data);
+          return;        
+        }
+    }     
+           
+        async function updateUser(req, res) {
             const user = req.body;
-            const oldUser = selectUserById(user._id);
-            const index = users.indexOf(oldUser);
-            users[index] = user;
-            res.json(user);
-    }   
-}     
+            const uid = user._id;
+            const data = await
+            userModel.updateUser(uid, user)
+            res.json(data);
+        };
+    }        
