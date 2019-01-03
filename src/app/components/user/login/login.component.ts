@@ -18,10 +18,10 @@ export class LoginComponent implements OnInit {
 
   
   login() {
-      this.userService.findUserByCredentials
+      this.userService.login
         (this.username, this.password).subscribe(
           (user: User) => {
-            this.router.navigate(["user", user._id]);
+            this.router.navigate(["profile"]);
           },
           (error: any) => {
             this.errorFlag= true;
