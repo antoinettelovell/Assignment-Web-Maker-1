@@ -27,7 +27,12 @@
     </div>
     <!-- Last Name-->
     <div class="form-group">
-        <label for="lastName"><b>Last Name</b></label>         <input class="form-control" [(ngModel)]= "user.lastName" name= "lastName" placeholder= "Enter Last Name...">
+        <label for="lastName"><b>Last Name</b></label> 
+       <input
+        class="form-control" 
+        [(ngModel)]= "user.lastName"
+         name= "lastName" 
+         placeholder= "Enter Last Name...">
     </div>
     <!-- Buttons -->
     <a routerLink="/user/{{uid}}/website"
